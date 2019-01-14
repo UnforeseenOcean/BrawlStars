@@ -7,6 +7,7 @@ package controleur;
 
 
 import controleur.actions.Action;
+import controleur.actions.ConnexionAction;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -32,20 +33,23 @@ public class ActionServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+                
                 String action = request.getParameter("action");
                 RequestDispatcher rd;
                 Action a = null;
                 String vue = "index.jsp";
                 switch(action){
-                    case "identite" : 
-                        //a = new IdentiteAction();
+                    case "connection" : 
+                        a = new ConnexionAction();
                         vue = a.execute(request);
                         rd = request.getRequestDispatcher(vue);
                         break;
-                    case "calcul" : 
-                        //a = new CalculAction();
-                        vue = a.execute(request);
-                        rd = request.getRequestDispatcher(vue);
+                    case "connect" : 
+                        rd = request.getRequestDispatcher("connection.jsp");
+                        break;
+                    case "disconnect" : 
+                        request.getSession().setAttribute("connect",  false);
+                        rd = request.getRequestDispatcher("index.jsp");
                         break;
                     default :
                         rd = request.getRequestDispatcher(vue);
