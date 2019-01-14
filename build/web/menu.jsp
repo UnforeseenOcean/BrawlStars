@@ -25,5 +25,8 @@
         <a class="nav-link" href="#">About</a>
       </li>
     </ul>
+     <div class="form-inline my-2 my-lg-0">
+          <a class="nav-link" href=""><button class="btn btn-danger my-2 my-sm-0">Connexion</button></a>
+     </div>
   </div>
 </nav>
