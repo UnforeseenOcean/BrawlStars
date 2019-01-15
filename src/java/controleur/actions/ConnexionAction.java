@@ -24,7 +24,10 @@ public class ConnexionAction extends Action{
         user = userDAO.getUser(email, password);
         if(user != null){
             request.getSession().setAttribute("connect",  true);
+            return "index.jsp";
+        } else {
+            return "connection.jsp";
         }
-        return "index.jsp";
+        
     }
 }

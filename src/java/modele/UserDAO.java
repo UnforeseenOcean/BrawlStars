@@ -35,4 +35,13 @@ public class UserDAO extends Modele{
             return null;
         }
     }
+    
+    public boolean newUser(User u){
+        try {
+            stmt.executeUpdate("INSERT INTO user (username, email, password) VALUES ('"+u.getUsername()+"', '"+u.getEmail()+"', '"+u.getPassword()+"')"); 
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
 }

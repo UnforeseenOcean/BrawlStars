@@ -8,6 +8,7 @@ package controleur;
 
 import controleur.actions.Action;
 import controleur.actions.ConnexionAction;
+import controleur.actions.InscriptionAction;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -44,12 +45,14 @@ public class ActionServlet extends HttpServlet {
                         vue = a.execute(request);
                         rd = request.getRequestDispatcher(vue);
                         break;
-                    case "connect" : 
-                        rd = request.getRequestDispatcher("connection.jsp");
-                        break;
-                    case "disconnect" : 
+                    case "disconnection" : 
                         request.getSession().setAttribute("connect",  false);
                         rd = request.getRequestDispatcher("index.jsp");
+                        break;
+                    case "inscription" : 
+                        a = new InscriptionAction();
+                        vue = a.execute(request);
+                        rd = request.getRequestDispatcher(vue);
                         break;
                     default :
                         rd = request.getRequestDispatcher(vue);
