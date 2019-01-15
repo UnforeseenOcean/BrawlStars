@@ -57,6 +57,15 @@
     </a>
   </div>
 </div>
-
+ 
+ <% for(tournoi:tournois){%>
+  <div class="card text-white bg-primary mb-3" style="max-width: 20rem;">
+  <div class="card-header">Header</div>
+  <div class="card-body">
+    <h4 class="card-title"> <%=tournoi.nom> </h4>
+    <p class="card-text"> <%=tournoi.participants> </p>
+  </div>
+</div>
+ <%}%>
 </body>
 </html>
