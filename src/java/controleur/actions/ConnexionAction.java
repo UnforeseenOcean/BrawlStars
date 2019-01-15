@@ -15,19 +15,20 @@ import modele.UserDAO;
  */
 public class ConnexionAction extends Action{
     private UserDAO userDAO = new UserDAO();
-    private User user;
+    private User user = new User();
     
     public String execute(HttpServletRequest request){
         String email = request.getParameter("email");
         String password = request.getParameter("password");
-        
-        user = userDAO.getUser(email, password);
-        if(user != null){
-            request.getSession().setAttribute("connect",  true);
-            return "index.jsp";
-        } else {
-            return "connection.jsp";
+        if(email != null && password != null && !password.equals("") && !email.equals("")){
+            user.setEmail(email);
+            user.setPassword(password);
+            user = userDAO.getUser(user);
+            if(user != null){
+                request.getSession().setAttribute("connect",  true);
+                return "index.jsp";
+            } 
         }
-        
+        return "connection.jsp";        
     }
 }

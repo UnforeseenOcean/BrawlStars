@@ -19,9 +19,11 @@
       <li class="nav-item">
         <a class="nav-link" href="#">Pricing</a>
       </li>
+      <% if(request.getSession().getAttribute("connect") == null || !(Boolean)request.getSession().getAttribute("connect")) { %>
       <li class="nav-item">
         <a class="nav-link" href="actionServlet?action=inscription">Inscription</a>
       </li>
+      <% }%>
     </ul>
   </div>
   <div class="form-inline my-2 my-lg-0">

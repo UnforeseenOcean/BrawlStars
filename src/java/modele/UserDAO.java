@@ -20,9 +20,9 @@ public class UserDAO extends Modele{
         super();
     }
     
-    public User getUser(String email, String password){
+    public User getUser(User u){
         try {
-            rs=stmt.executeQuery("select * from user where email ='"+email+"' and password='"+password+"'"); 
+            rs=stmt.executeQuery("select * from user where email ='"+u.getEmail()+"' and password='"+u.getPassword()+"'"); 
             while(rs.next()){
                 user = new User();
                 user.setEmail(rs.getString("email"));

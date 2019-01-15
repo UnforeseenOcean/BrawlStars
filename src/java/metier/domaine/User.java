@@ -16,7 +16,7 @@ public class User {
     private int id;
 
     public void setUsername(String username) {
-        this.username = username;
+        this.username = username.toLowerCase();
     }
 
     public void setEmail(String email) {
@@ -24,7 +24,7 @@ public class User {
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        this.password = this.encrypt(password);
     }
 
     public void setId(int id) {
@@ -44,6 +44,24 @@ public class User {
     }
 
     public String getUsername() {
-        return username;
+        return Character.toUpperCase(username.charAt(0)) + username.substring(1);
+    }
+    
+     private String encrypt(String password){
+        String crypte= "";
+        for (int i=0; i<password.length();i++)  {
+            int c=password.charAt(i)^48;  
+            crypte=crypte+(char)c; 
+        }
+        return crypte;
+    }
+     
+     private String decrypt(String password){
+        String aCrypter= "";
+        for (int i=0; i<password.length();i++)  {
+            int c=password.charAt(i)^48;  
+            aCrypter=aCrypter+(char)c; 
+        }
+        return aCrypter;
     }
 }
