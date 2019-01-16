@@ -10,18 +10,19 @@
 
   <div class="collapse navbar-collapse" id="navbarColor01">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="../">Home <span class="sr-only">(current)</span></a>
-      </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Features</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Pricing</a>
+        <a class="nav-link" href="../">Accueil </a>
       </li>
       <% if(request.getSession().getAttribute("connect") == null || !(Boolean)request.getSession().getAttribute("connect")) { %>
       <li class="nav-item">
         <a class="nav-link" href="actionServlet?action=inscription">Inscription</a>
+      </li>
+      <% }else { %>
+      <li class="nav-item">
+        <a class="nav-link" href="actionServlet?action=inscription">Tournoi</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="actionServlet?action=newTournoi">Nouveau tournoi</a>
       </li>
       <% }%>
     </ul>

@@ -9,6 +9,7 @@ package controleur;
 import controleur.actions.Action;
 import controleur.actions.ConnexionAction;
 import controleur.actions.InscriptionAction;
+import controleur.actions.TournoiAction;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -39,24 +40,33 @@ public class ActionServlet extends HttpServlet {
                 RequestDispatcher rd;
                 Action a = null;
                 String vue = "index.jsp";
-                switch(action){
-                    case "connection" : 
-                        a = new ConnexionAction();
-                        vue = a.execute(request);
-                        rd = request.getRequestDispatcher(vue);
-                        break;
-                    case "disconnection" : 
-                        request.getSession().setAttribute("connect",  false);
-                        rd = request.getRequestDispatcher("index.jsp");
-                        break;
-                    case "inscription" : 
-                        a = new InscriptionAction();
-                        vue = a.execute(request);
-                        rd = request.getRequestDispatcher(vue);
-                        break;
-                    default :
-                        rd = request.getRequestDispatcher(vue);
-                }              
+                if(action != null) {
+                    switch(action){
+                        case "connection" : 
+                            a = new ConnexionAction();
+                            vue = a.execute(request);
+                            rd = request.getRequestDispatcher(vue);
+                            break;
+                        case "disconnection" : 
+                            request.getSession().setAttribute("connect",  false);
+                            rd = request.getRequestDispatcher(vue);
+                            break;
+                        case "inscription" : 
+                            a = new InscriptionAction();
+                            vue = a.execute(request);
+                            rd = request.getRequestDispatcher(vue);
+                            break;
+                        case "newTournoi" : 
+                            a = new TournoiAction();
+                            vue = a.execute(request);
+                            rd = request.getRequestDispatcher(vue);
+                            break;
+                        default :
+                            rd = request.getRequestDispatcher(vue);
+                    }              
+                } else {
+                     rd = request.getRequestDispatcher(vue);
+                }
                 
                 rd.forward(request, response);
                 
