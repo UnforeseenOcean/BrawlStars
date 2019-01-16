@@ -9,6 +9,7 @@ package controleur;
 import controleur.actions.Action;
 import controleur.actions.ConnexionAction;
 import controleur.actions.InscriptionAction;
+import controleur.actions.ListeTournoiAction;
 import controleur.actions.TournoiAction;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -58,6 +59,11 @@ public class ActionServlet extends HttpServlet {
                             break;
                         case "newTournoi" : 
                             a = new TournoiAction();
+                            vue = a.execute(request);
+                            rd = request.getRequestDispatcher(vue);
+                            break;
+                        case "tournoi" : 
+                            a = new ListeTournoiAction();
                             vue = a.execute(request);
                             rd = request.getRequestDispatcher(vue);
                             break;

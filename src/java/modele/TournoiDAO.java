@@ -17,21 +17,40 @@ import metier.domaine.Tournoi;
  */
 public class TournoiDAO extends Modele{
     private Tournoi tournoi = null;
-    private ArrayList t = new ArrayList();
     public TournoiDAO(){
         super();
     }
     
     public ArrayList getTournoi(){
         try {
+            ArrayList t = new ArrayList();
             rs=stmt.executeQuery("select * from tournoi"); 
             while(rs.next()){
+                ArrayList tu = new ArrayList();
                 tournoi = new Tournoi();
                 tournoi.setDate(rs.getDate("date"));
                 tournoi.setNom(rs.getString("nom"));
                 tournoi.setId(rs.getInt("id"));
-                t.add(tournoi);
+                tu.add(tournoi);
+                TournoiDAO tournoiDAO = new TournoiDAO();
+                tu.add(tournoiDAO.getParticipant(tournoi.getId()));
+                t.add(tu);
             }
+            return t;
+        } catch (Exception e) {
+            System.out.println(e);
+            return null;
+        }
+    }
+    
+    public ArrayList getParticipant(int id){
+        UserDAO userDAO = new UserDAO();
+        ArrayList t = new ArrayList();
+        try {
+                rs=stmt.executeQuery("select * from user_tournoi where id_tournoi ="+id); 
+                while(rs.next()){
+                    t.add(userDAO.getUserById(rs.getInt("id_user")));
+                }
             return t;
         } catch (Exception e) {
             return null;

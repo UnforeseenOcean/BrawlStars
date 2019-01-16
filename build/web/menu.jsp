@@ -19,7 +19,7 @@
       </li>
       <% }else { %>
       <li class="nav-item">
-        <a class="nav-link" href="actionServlet?action=inscription">Tournoi</a>
+        <a class="nav-link" href="actionServlet?action=tournoi">Tournoi</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="actionServlet?action=newTournoi">Nouveau tournoi</a>

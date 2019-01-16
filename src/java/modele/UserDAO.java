@@ -38,6 +38,22 @@ public class UserDAO extends Modele{
         }
     }
     
+    public User getUserById(int id){
+        try {
+            rs=stmt.executeQuery("select * from user where id ="+id); 
+            while(rs.next()){
+                user = new User();
+                user.setEmail(rs.getString("email"));
+                user.setUsername(rs.getString("username"));
+                user.setPassword(rs.getString("password"));
+                user.setId(rs.getInt("id"));
+            }
+            return user;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+    
     public ArrayList getUsers(){
         try {
             rs=stmt.executeQuery("select * from user"); 
