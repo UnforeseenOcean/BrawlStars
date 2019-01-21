@@ -22,7 +22,7 @@ public class InscriptionAction extends Action{
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         String username = request.getParameter("username");
-        
+        // Vérifie les paramètres
         if(email != null && password != null && username != null && !email.equals("")  && !password.equals("") && !username.equals("") ){
             user.setEmail(email);
             user.setPassword(password);

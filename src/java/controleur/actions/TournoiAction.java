@@ -40,7 +40,7 @@ public class TournoiAction extends Action{
         } catch (ParseException ex) {
             Logger.getLogger(TournoiAction.class.getName()).log(Level.SEVERE, null, ex);
         }
-                
+        // Vérifie les paramètres
         if(nom != null && date != null &&  !nom.equals("")  && !date.equals("")){
             tournoi.setDate(date);
             tournoi.setNom(nom);

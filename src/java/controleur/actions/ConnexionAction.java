@@ -20,6 +20,7 @@ public class ConnexionAction extends Action{
     public String execute(HttpServletRequest request){
         String email = request.getParameter("email");
         String password = request.getParameter("password");
+        // Vérifie les paramètres
         if(email != null && password != null && !password.equals("") && !email.equals("")){
             user.setEmail(email);
             user.setPassword(password);

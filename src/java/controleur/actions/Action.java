@@ -12,5 +12,5 @@ import javax.servlet.http.HttpServletRequest;
  * @author lucie
  */
 public abstract class Action {
-    public String execute(HttpServletRequest request){return "index.jps"; }
+    public String execute(HttpServletRequest request){return "index.jsp"; }
 }
